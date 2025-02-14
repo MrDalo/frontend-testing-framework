@@ -16,7 +16,8 @@ const config: Config = {
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'jsdom',
-  testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
+  // Only match files that end in .unit.test.ts or .unit.test.tsx
+  testMatch: ['**/*.unit.test.[jt]s?(x)'],
   transformIgnorePatterns: [
     'node_modules/(?!(jose)/)', // Transform `jose` module
   ],

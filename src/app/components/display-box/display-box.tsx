@@ -6,7 +6,10 @@ type Props = {
 
 const DisplayBox = ({ count }: Props) => {
   return (
-    <div className='flex items-center justify-center rounded-xl bg-gray-300 px-8 py-6'>
+    <div
+      data-testid='display-box'
+      className={`flex items-center justify-center rounded-xl ${count < 0 ? 'bg-red-300' : 'bg-green-300'} px-8 py-6`}
+    >
       {count}
     </div>
   )
