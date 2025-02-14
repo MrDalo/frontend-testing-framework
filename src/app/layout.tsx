@@ -24,7 +24,9 @@ const RootLayout = ({
   children: React.ReactNode
 }>): React.ReactNode => (
   <html lang='en'>
-    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
+    >
       {children}
     </body>
   </html>

@@ -23,7 +23,7 @@ This template contains initialized testing environment for different testing typ
 ### Tech-stack of the front-end application
 
 - Nextjs 14
-- Tailwind CSS 3
+- Tailwind CSS 4
 - Axios
 - Typescript 5
 - Eslint 9
