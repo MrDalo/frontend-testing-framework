@@ -209,3 +209,100 @@ Name you test case file like `<name-of-test>.accessibility.test.ts`.
   ```bash
   npm run test:accessibility-lighthouse
   ```
+
+## Security Testing
+
+**Tech Stack**
+
+- ESLint with [eslint-plugin-security](https://github.com/nodesecurity/eslint-plugin-security)
+- [OWASP ZAP](https://www.zaproxy.org/) (dynamic scanning)
+
+**What to Test**
+
+- Cross-Site Scripting (XSS) vulnerabilities
+- CSRF handling
+- Secure handling of user input and data
+- Secure HTTP headers
+
+**Folder & File Structure**  
+Typically, security scans and linting can be integrated into CI, not always in local test files. You might keep scripts or config in `/tests/security-tests/` folder.
+
+**How to Run**
+
+- ESLint security checks:
+
+  ```bash
+  npm run lint
+  ```
+
+  ```bash
+  npm run lint:nowarn
+  ```
+
+- OWASP ZAP dynamic scan:
+  OWASP ZAP scanning (often run outside the app code, e.g., pointing ZAP at a local/staging URL).
+
+## Internationalization (i18n) Testing
+
+**Tech Stack**
+
+- [Jest](https://jestjs.io/) (unit/integration for locale logic)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for verifying UI changes based on locale
+- [Cypress](https://www.npmjs.com/package/cypress) for more in-depth i18n E2E tests
+
+**What to Test**
+
+- Locale switching logic
+- Translated strings (loading the correct translations)
+- Date, currency, and numeric formats
+
+**Folder & File Structure**
+
+- When you want to do Interationalization testing in the unit tests level, you can create them as a part of unit test file and create separate `describe()` function for them or create new file called `<name-of-test>.i18n.test.ts` next to the `<name-of-component>.unit.test.ts` file.
+
+- For E2E tests, store them in the `/tests/i18n-tests/` folder and name your file like `<name-of-test>.i18n.test.ts`.
+
+**Key Considerations**
+
+- Right-to-left (RTL) languages (e.g., Arabic) might need special layout checks.
+
+## Cross-Browser Testing
+
+**Tech Stack**
+
+- [BrowserStack](https://www.browserstack.com/) or [LambdaTest](https://www.lambdatest.com/) for cloud-based cross-browser environments
+- [Cypress](https://www.cypress.io/) or [Playwright](https://playwright.dev/) can be configured to run on multiple browsers
+
+**What to Test**
+
+- Ensure UI and functionality consistency across major browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design across devices (mobile, tablet, desktop)
+
+**Folder & File Structure**  
+Store cross-browser tests into `/tests/cross-browser-tests/` folder.
+Name you test case file like `<name-of-test>.cross-browser.test.ts`.
+
+**How to Run**
+
+- If using BrowserStack or LambdaTest with Cypress:
+  ```bash
+  npm run cypress:run -- --browser chromium
+  ```
+  Then configure other browsers or run in the cloud environment.
+
+## How to Use This Template
+
+1. **Clone the repository** and install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Configure environment variables if needed (e.g., for integration or E2E tests pointing at a backend)
+
+3. Run tests. You can find out how to run each type of test in the respective section above.
+
+4. Customize:
+   Update or remove any test folders you don’t need (e.g., if you’re not doing cross-browser or i18n testing).
+   Adjust folder structure to your team’s preferences.
+   Integrate with your CI/CD pipeline for continuous validation.
