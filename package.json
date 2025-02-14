@@ -9,12 +9,13 @@
     "lint:nowarn": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --max-warnings 0 --fix --cache",
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
-    "test:unit": "jest --config jest.config.ts",
-    "test:unit-watch": "jest --config jest.config.ts --watch",
-    "test:unit-coverage": "jest --config jest.config.ts --coverage",
-    "test:integration": "jest --config jest.integration.config.ts",
-    "test:integration-watch": "jest --config jest.integration.config.ts --watch",
-    "test:integration-coverage": "jest --config jest.integration.config.ts --coverage"
+    "test": "jest",
+    "test:unit": "jest --testMatch='**/*.unit.test.[jt]s?(x)'",
+    "test:unit-watch": "jest --testMatch='**/*.unit.test.[jt]s?(x)' --watch",
+    "test:unit-coverage": "jest --testMatch='**/*.unit.test.[jt]s?(x)' --coverage",
+    "test:integration": "jest --testMatch='**/*.integration.test.[jt]s?(x)'",
+    "test:integration-watch": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --watch",
+    "test:integration-coverage": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --coverage"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
