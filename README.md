@@ -101,7 +101,7 @@ This template contains initialized testing environment for different testing typ
 
 3. Run test coverage of unit tests:
    ```bash
-   npm run test:coverange
+   npm run test:coverage
    ```
 
 ### Integration testing
@@ -316,3 +316,41 @@ Name you test case file like `<name-of-test>.cross-browser.test.ts`.
   npm run cypress:run -- --browser chromium
   ```
   Then configure other browsers or run in the cloud environment.
+
+## Final recommended folder structure
+
+```bash
+.
+├── src/
+│   ├── app/                        # Next.js App Router directory
+│   │   ├── layout.tsx
+│   │   └── ...                     # Other Next.js route files or folders
+│   ├── components/
+│   │   └── SomeComponent/
+│   │       ├── SomeComponent.tsx
+│   │       └── __tests__/
+│   │           ├── SomeComponent.unit.test.ts
+│   │           ├── SomeComponent.visual.test.ts
+│   │           └── SomeComponent.integration.test.ts
+│   └── tests/
+│       ├── e2e/
+│       │   ├── login.e2e.test.ts
+│       │   └── dashboard.e2e.test.ts
+│       ├── visual-tests/
+│       │   └── dashboard.visual.test.ts
+│       ├── performance-tests/
+│       │   └── profile-page.performance.test.ts
+│       ├── accessibility-tests/
+│       │   └── profile-page.accessibility.test.ts
+│       ├── security-tests/
+│       │   └── security-test.config.ts
+│       ├── i18n-tests/
+│       │   └── profile-data.i18n.test.ts
+│       ├── cross-browser-tests/
+│           └── profile-page.cross-browser.test.ts
+├── jest.config.js
+├── cypress.config.js
+├── package.json
+└── README.md
+└── ...
+```

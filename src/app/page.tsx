@@ -1,4 +1,5 @@
 import fs from 'fs'
+import Link from 'next/link'
 import path from 'path'
 import { remark } from 'remark'
 import html from 'remark-html'
@@ -11,6 +12,12 @@ const HomePage = async (): Promise<React.ReactNode> => {
 
   return (
     <div className='markdown-body size-full' style={{ padding: '1rem' }}>
+      <Link
+        href='/example'
+        className='rounded-lg bg-blue-500 px-4 py-2 !text-white hover:bg-blue-700'
+      >
+        Example
+      </Link>
       <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </div>
   )
