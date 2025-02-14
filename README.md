@@ -90,18 +90,18 @@ This template contains initialized testing environment for different testing typ
 1. Run unit tests once:
 
    ```bash
-   npm run test
+   npm run test:unit
    ```
 
 2. Run unit tests in watch mode:
 
    ```bash
-   npm run test:watch
+   npm run test:unit-watch
    ```
 
 3. Run test coverage of unit tests:
    ```bash
-   npm run test:coverage
+   npm run test:unit-coverage
    ```
 
 ### Integration testing
@@ -129,9 +129,22 @@ This template contains initialized testing environment for different testing typ
 
 #### How to run:
 
-```bash
+1. Run integration tests once:
+
+   ```bash
    npm run test:integration
-```
+   ```
+
+2. Run integration tests in watch mode:
+
+   ```bash
+   npm run test:integration-watch
+   ```
+
+3. Run test coverage of integration tests:
+   ```bash
+   npm run test:integration-coverage
+   ```
 
 ### End-to-End testing
 
