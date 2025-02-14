@@ -28,6 +28,33 @@ This template contains initialized testing environment for different testing typ
 - Typescript 5
 - Eslint 9
 
+## How to Use This Template
+
+1. **Clone the repository** and install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Configure environment variables if needed (e.g., for integration or E2E tests pointing at a backend)
+
+3. Run tests. You can find out how to run each type of test in the respective section above.
+
+4. Customize:
+   Update or remove any test folders you don’t need (e.g., if you’re not doing cross-browser or i18n testing).
+   Adjust folder structure to your team’s preferences.
+   Integrate with your CI/CD pipeline for continuous validation.
+
+## Best Practices
+
+- Keep Tests Atomic: Especially unit tests—small, isolated, and fast.
+- Leverage CI/CD: Automate as many tests as possible on every push.
+- Regularly Update: Tools, libraries, and dependencies (e.g., security definitions) evolve quickly.
+- Document: Keep your testing docs up to date as you add or remove tooling.
+- Write Tests Early and Continuously: Starting testing early in the development process allows teams to identify potential issues before they escalate, saving time and resources.
+- Test Real User Scenarios: Prioritize tests that simulate real user interactions and workflows. Use E2E testing for that.
+- Balance Test Coverage with Practicality: Striving for 100% test coverage can be impractical and time-consuming, while insufficient coverage leaves the application vulnerable to defects. Focus testing efforts on critical paths, high-risk areas, and frequently used features. Prioritizing quality over quantity ensures efficient use of resources.
+
 ## Testing
 
 ### Unit testing
@@ -289,20 +316,3 @@ Name you test case file like `<name-of-test>.cross-browser.test.ts`.
   npm run cypress:run -- --browser chromium
   ```
   Then configure other browsers or run in the cloud environment.
-
-## How to Use This Template
-
-1. **Clone the repository** and install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-2. Configure environment variables if needed (e.g., for integration or E2E tests pointing at a backend)
-
-3. Run tests. You can find out how to run each type of test in the respective section above.
-
-4. Customize:
-   Update or remove any test folders you don’t need (e.g., if you’re not doing cross-browser or i18n testing).
-   Adjust folder structure to your team’s preferences.
-   Integrate with your CI/CD pipeline for continuous validation.
