@@ -5,10 +5,16 @@
 
   "compilerOptions": {
     // We override the "types" to load Cypress definitions instead of Jest
-    "types": ["cypress"]
+    // "types": ["cypress"]
 
     // If you need Node types for your E2E tests, add them here
-    // "types": ["cypress", "node"],
+    "types": ["cypress", "node"]
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "ES2015"
+    }
   },
   "exclude": [],
   "include": ["./**/*.ts", "./**/*.tsx", "../../cypress.config.ts"]

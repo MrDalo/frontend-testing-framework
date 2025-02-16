@@ -186,7 +186,7 @@ This template contains initialized testing environment for different testing typ
 
 **Tech Stack**
 
-- [Cypress](https://www.cypress.io/) with [@cypress/snapshot](https://github.com/cypress-io/snapshot)
+- [Cypress](https://www.cypress.io/) with [cypress-visual-regression](https://www.npmjs.com/package/cypress-visual-regression)
 
 **What to Test**
 

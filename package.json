@@ -16,8 +16,11 @@
     "test:integration": "jest --testMatch='**/*.integration.test.[jt]s?(x)'",
     "test:integration-watch": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --watch",
     "test:integration-coverage": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --coverage",
-    "test:e2e:open": "cypress open --config-file cypress.config.ts",
-    "test:e2e": "cypress run --config-file cypress.config.ts"
+    "test:crypress:open-all": "cypress open --config-file cypress.config.ts",
+    "test:e2e": "cypress run --config-file cypress.config.ts --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
+    "test:e2e:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
+    "test:visual": "cypress run --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'",
+    "test:visual:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -54,6 +57,7 @@
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
     "cypress": "^14.0.3",
+    "cypress-visual-regression": "^5.2.2",
     "eslint": "^9.15.0",
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^10.0.1",
