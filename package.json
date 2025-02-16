@@ -15,7 +15,9 @@
     "test:unit-coverage": "jest --testMatch='**/*.unit.test.[jt]s?(x)' --coverage",
     "test:integration": "jest --testMatch='**/*.integration.test.[jt]s?(x)'",
     "test:integration-watch": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --watch",
-    "test:integration-coverage": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --coverage"
+    "test:integration-coverage": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --coverage",
+    "test:e2e:open": "cypress open --config-file cypress.config.ts",
+    "test:e2e": "cypress run --config-file cypress.config.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
