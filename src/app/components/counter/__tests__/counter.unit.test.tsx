@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { render, screen, fireEvent } from '@testing-library/react'
 import Counter from '../counter'
 
@@ -7,7 +8,7 @@ describe('Counter Component', () => {
     return {
       incrementButton: screen.getByRole('button', { name: /increment/i }),
       decrementButton: screen.getByRole('button', { name: /decrement/i }),
-      getCountDisplay: () => screen.getByText(/^-?\d+$/), // Matches any number, including negative
+      getCountDisplay: (): HTMLElement => screen.getByText(/^-?\d+$/), // Matches any number, including negative
     }
   }
 

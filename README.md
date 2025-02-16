@@ -160,7 +160,7 @@ This template contains initialized testing environment for different testing typ
 
 #### Folder structure:
 
-- In the `/tests/e2e` folder create test files `<name-of-test>.e2e.test.ts`. Here we will write end-to-end tests.
+- In the `/tests/e2e` folder create test files `<name-of-test>.e2e.cy.ts`. Here we will write end-to-end tests.
 
 #### Test structure:
 
@@ -170,8 +170,16 @@ This template contains initialized testing environment for different testing typ
 
 #### How to run:
 
+1. To run already created tests
+
 ```bash
    npm run test:e2e
+```
+
+2. To open GUI browser
+
+```bash
+  npm run test:e2e:open
 ```
 
 ## Visual Regression Testing
@@ -347,8 +355,8 @@ Name you test case file like `<name-of-test>.cross-browser.test.ts`.
 │   │           └── SomeComponent.integration.test.ts
 │   └── tests/
 │       ├── e2e/
-│       │   ├── login.e2e.test.ts
-│       │   └── dashboard.e2e.test.ts
+│       │   ├── login.e2e.cy.ts
+│       │   └── dashboard.e2e.cy.ts
 │       ├── visual-tests/
 │       │   └── dashboard.visual.test.ts
 │       ├── performance-tests/

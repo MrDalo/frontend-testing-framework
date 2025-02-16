@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { render, screen } from '@testing-library/react'
 import DisplayBox from '../display-box'
 
@@ -5,8 +6,8 @@ describe('DisplayBox Component', () => {
   const setup = (count: number) => {
     render(<DisplayBox count={count} />)
     return {
-      getContainer: () => screen.getByTestId('display-box'),
-      getDisplayValue: () => screen.getByText(count.toString()),
+      getContainer: (): HTMLElement => screen.getByTestId('display-box'),
+      getDisplayValue: (): HTMLElement => screen.getByText(count.toString()),
     }
   }
 

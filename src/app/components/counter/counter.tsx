@@ -3,7 +3,7 @@ import React from 'react'
 import { DisplayBox } from '../display-box'
 import { Button } from '../button'
 
-const Counter = () => {
+const Counter = (): React.ReactNode => {
   const [count, setCount] = React.useState(0)
   return (
     <div className='flex flex-col items-center justify-center space-y-4'>

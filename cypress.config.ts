@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // cypress.config.ts
 import { defineConfig } from 'cypress'
 
@@ -8,7 +9,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    supportFile: 'cypress/support/e2e.ts',
+    supportFile: false,
     specPattern: 'src/tests/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
 })
