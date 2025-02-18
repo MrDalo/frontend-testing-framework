@@ -16,11 +16,12 @@
     "test:integration": "jest --testMatch='**/*.integration.test.[jt]s?(x)'",
     "test:integration-watch": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --watch",
     "test:integration-coverage": "jest --testMatch='**/*.integration.test.[jt]s?(x)' --coverage",
-    "test:crypress:open-all": "cypress open --config-file cypress.config.ts",
+    "test:cypress:open": "cypress open --config-file cypress.config.ts",
     "test:e2e": "cypress run --config-file cypress.config.ts --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
-    "test:e2e:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
+    "test:e2e:open": "cypress open --config-file cypress.config.ts --config \"specPattern='src/tests/e2e/**/*.e2e.cy.{ts,tsx}'\"",
     "test:visual": "cypress run --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'",
-    "test:visual:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'"
+    "test:visual:open": "cypress open --config-file cypress.config.ts --config \"specPattern='src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'\"",
+    "test:visual:initial": "cypress run --config-file cypress.config.ts --env visualRegressionType=base --spec 'src/tests/visual-tests/**/*.visual.cy.ts'"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

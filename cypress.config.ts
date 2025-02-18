@@ -13,15 +13,15 @@ export default defineConfig({
     },
     env: {
       // Plugin's mode: "regression" compares new shots to existing base images;
-      // "base" overwrites baseline images.
+      // "base" will generate new base images so it will overwrites existing ones.
       visualRegressionType: 'regression',
 
       // Where to store baseline images.
       // The default is 'cypress/snapshots/base', but let's keep them in /src/tests/visual-tests
-      visualRegressionBaseDirectory: 'src/tests/visual-tests/snapshots/base',
+      // visualRegressionBaseDirectory: 'src/tests/visual-tests/snapshots/base',
 
-      // Where to put diff images if a mismatch is found.
-      visualRegressionDiffDirectory: 'src/tests/visual-tests/snapshots/diff',
+      // // Where to put diff images if a mismatch is found.
+      // visualRegressionDiffDirectory: 'src/tests/visual-tests/snapshots/diff',
 
       // 'always' means generate a diff image even if the test passes.
       // Options: 'fail' (only generate on mismatch), 'never', 'always'
@@ -32,7 +32,7 @@ export default defineConfig({
       visualRegressionFailSilently: false,
     },
 
-    screenshotsFolder: 'src/tests/visual-tests/snapshots/actual',
+    screenshotsFolder: './cypress/snapshots/actual',
     supportFile: 'cypress/support/e2e.ts',
     specPattern: 'src/tests/**/*.cy.{js,jsx,ts,tsx}',
   },
