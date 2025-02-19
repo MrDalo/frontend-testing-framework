@@ -205,7 +205,7 @@ Performance tests are often run via specialized CI configurations rather than in
 
 - [Lighthouse](https://github.com/GoogleChrome/lighthouse) CLI or [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
 - [WebPageTest](https://www.webpagetest.org/) (external web service where you can run tests on your publically accessible site)
-- [Sitespeed.io](https://www.sitespeed.io/) or [k6](https://k6.io/) for advanced scenarios
+- [Sitespeed.io](https://www.sitespeed.io/) for advanced scenarios
 
 **What to Test**
 
