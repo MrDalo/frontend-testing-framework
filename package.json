@@ -21,7 +21,7 @@
     "test:e2e:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
     "test:visual": "cypress run --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'",
     "test:visual:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'",
-    "test:performance-lighthouse": "lighthouse http://localhost:3000 --output json --output html --view --output-path ./src/tests/performance-tests/lighthouse-report"
+    "test:performance": "lighthouse http://localhost:3000 --output json --output html --view --output-path ./src/tests/performance-tests/lighthouse-report"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

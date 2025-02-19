@@ -205,7 +205,7 @@ Performance tests are often run via specialized CI configurations rather than in
 
 - [Lighthouse](https://github.com/GoogleChrome/lighthouse) CLI or [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
 - [WebPageTest](https://www.webpagetest.org/) (external web service where you can run tests on your publically accessible site)
-- [Sitespeed.io](https://www.sitespeed.io/) for advanced scenarios
+- [Sitespeed.io](https://www.sitespeed.io/) for advanced scenarios (required additional instalation)
 
 **What to Test**
 
@@ -215,9 +215,7 @@ Performance tests are often run via specialized CI configurations rather than in
 - API response times under stress
 
 **Folder & File Structure**  
-Store performance tests into `/tests/performance-tests/` folder.
-Name you test case file like `<name-of-test>.performance.test.ts`.
-
+Store performance tests outputs into `/tests/performance-tests/` folder.
 **How to Run**
 
 - Lighthouse CLI example:
