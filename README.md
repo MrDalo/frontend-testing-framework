@@ -197,13 +197,27 @@ This template contains initialized testing environment for different testing typ
 **Folder & File Structure**  
 Store visual tests in a `/tests/visual-tests/` folder, or integrate them with your existing Cypress E2E tests. Name you test file like `<name-of-test>.visual.test.ts`.
 
+**How to Run**
+
+1. To run already created tests
+
+```bash
+   npm run test:visual
+```
+
+2. To open GUI browser
+
+```bash
+  npm run test:visual:open
+```
+
 ## Performance Testing
 
 Performance tests are often run via specialized CI configurations rather than integrated code tests
 
 **Tech Stack**
 
-- [Lighthouse](https://github.com/GoogleChrome/lighthouse) CLI or [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
+- [Lighthouse](https://github.com/GoogleChrome/lighthouse) CLI or [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) (covers all basic performance measuring)
 - [WebPageTest](https://www.webpagetest.org/) (external web service where you can run tests on your publically accessible site)
 - [Sitespeed.io](https://www.sitespeed.io/) for advanced scenarios (required additional instalation)
 
@@ -216,6 +230,7 @@ Performance tests are often run via specialized CI configurations rather than in
 
 **Folder & File Structure**  
 Store performance tests outputs into `/tests/performance-tests/` folder.
+
 **How to Run**
 
 - Lighthouse CLI example:
