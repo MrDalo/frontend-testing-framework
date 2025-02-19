@@ -21,6 +21,8 @@
     "test:e2e:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
     "test:visual": "cypress run --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'",
     "test:visual:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'",
+    "test:accessibility": "cypress run --config-file cypress.config.ts --spec 'src/tests/accessibility-tests/**/*.accessibility.cy.{ts,tsx}'",
+    "test:accessibility:open": "cypress open --config-file cypress.config.ts --spec 'src/tests/accessibility-tests/**/*.accessibility.cy.{ts,tsx}'",
     "test:performance": "lighthouse http://localhost:3000 --output json --output html --view --output-path ./src/tests/performance-tests/lighthouse-report"
   },
   "dependencies": {
@@ -58,7 +60,9 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
+    "axe-core": "^4.10.2",
     "cypress": "^14.0.3",
+    "cypress-axe": "^1.6.0",
     "cypress-visual-regression": "^5.2.2",
     "eslint": "^9.15.0",
     "eslint-config-next": "15.0.3",

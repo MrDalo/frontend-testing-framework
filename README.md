@@ -242,8 +242,8 @@ Store performance tests outputs into `/tests/performance-tests/` folder.
 
 **Tech Stack**
 
-- [axe-core](https://github.com/dequelabs/axe-core) (with Cypress integration (cypress-axe) and Jest integration)
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse#accessibility)
+- [axe-core](https://github.com/dequelabs/axe-core) with Cypress and plugin [cypress-axe](https://www.npmjs.com/package/cypress-axe)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse#accessibility) - accessibility testing is part of the performance testing report
 
 **What to Test**
 
@@ -253,23 +253,30 @@ Store performance tests outputs into `/tests/performance-tests/` folder.
 - Screen reader support
 
 **Folder & File Structure**  
-You can keep these in `accessibility-tests/` or integrate with e2e tests (e.g., Cypress + axe plugin):
+You can keep these in `accessibility-tests/` or integrate with e2e tests (e.g., Cypress + cypress-axe plugin):
 
 Store accessibility tests into `/tests/accessibility-tests/` folder.
 Name you test case file like `<name-of-test>.accessibility.test.ts`.
 
 **How to Run**
 
-- If integrated with Cypress + `cypress-axe`:
+1. To run already created Cypress tests
 
-  ```bash
-  npm run test:accessibility-cypress
-  ```
+```bash
+   npm run test:visual
+```
 
-- If using Lighthouse accessibility audits::
-  ```bash
-  npm run test:accessibility-lighthouse
-  ```
+2. To open Cypress GUI browser
+
+```bash
+  npm run test:visual:open
+```
+
+3. To run performance test with accesibility testing using Lighthouse:
+
+```bash
+npm run test:performance
+```
 
 ## Security Testing
 

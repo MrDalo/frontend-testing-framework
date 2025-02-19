@@ -1,4 +1,6 @@
 import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
+import 'cypress-axe'
+
 addCompareSnapshotCommand({
   // e.g. Cypress screenshot option to capture entire viewport:
   capture: 'fullPage',
