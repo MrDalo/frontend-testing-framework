@@ -3,5 +3,11 @@
     "title": "Hallo Welt!",
     "about": "Zur Infoseite",
     "example": "Beispiel"
+  },
+  "ExamplePage": {
+    "title": "Beispiel mit interaktiver Komponente",
+    "increase": "Zunahme",
+    "decrease": "Verringern",
+    "back": "Zurück zur Startseite"
   }
 }

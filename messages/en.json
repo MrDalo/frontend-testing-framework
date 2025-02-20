@@ -3,5 +3,11 @@
     "title": "Hello world!",
     "about": "Go to the about page",
     "example": "Example"
+  },
+  "ExamplePage": {
+    "title": "Example with interactive component",
+    "increase": "Increase",
+    "decrease": "Decrease",
+    "back": "Back to home"
   }
 }

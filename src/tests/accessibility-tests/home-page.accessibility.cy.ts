@@ -1,4 +1,4 @@
-import { logAccessibilityViolations } from "../utils/logAccessibilityViolations"
+import { logAccessibilityViolations } from '../utils/logAccessibilityViolations'
 
 describe('Homepage Accessibility', () => {
   beforeEach(() => {
@@ -7,12 +7,6 @@ describe('Homepage Accessibility', () => {
   })
 
   it('should have no detectable a11y violations on load', () => {
-    cy.checkA11y(
-      '',
-      undefined,
-      logAccessibilityViolations
-    )
-
+    cy.checkA11y('', undefined, logAccessibilityViolations)
   })
 })
-

@@ -40,7 +40,6 @@ export default [
       'plugin:react/recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:@typescript-eslint/eslint-recommended',
-      'plugin:security/recommended', // <-- Security recommended ruleset
       'prettier',
       'plugin:prettier/recommended',
       'plugin:react-hooks/recommended',
@@ -48,10 +47,9 @@ export default [
     )
   ),
   {
-    // 3) Add the plugin to the "plugins" object
     plugins: {
       '@typescript-eslint': fixupPluginRules(typescriptEslint),
-      security: fixupPluginRules(security), // <-- Make sure we include 'security' here
+      security: fixupPluginRules(security),
     },
 
     languageOptions: {
@@ -71,7 +69,6 @@ export default [
       },
     },
 
-    // 4) Adjust or override rules here
     rules: {
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
@@ -121,10 +118,13 @@ export default [
       'no-duplicate-imports': 'warn',
       '@typescript-eslint/no-restricted-types': 'warn',
       'object-shorthand': 'warn',
-
-      // Optional: Some security rules can be too strict, so you might turn them off or lower severity
-      // e.g. security/detect-object-injection is often too noisy for front-end code:
-      // 'security/detect-object-injection': 'off',
+      'security/detect-object-injection': 'warn',
+      'security/detect-bidi-characters': 'warn',
+      'security/detect-non-literal-regexp': 'warn',
+      'security/detect-unsafe-regex': 'warn',
+      'security/detect-eval-with-expression': 'warn',
+      'security/detect-non-literal-fs-filename': 'warn',
+      'security/detect-pseudoRandomBytes': 'warn',
     },
   },
 ]
