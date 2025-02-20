@@ -8,7 +8,7 @@ const ExamplePage = (): React.ReactNode => (
       Example with interactive component
     </h1>
     <Counter />
-    <Link className='text-blue-500 hover:underline' href='/'>
+    <Link className='text-blue-600 hover:underline' href='/'>
       Back to home
     </Link>
   </div>

@@ -39,7 +39,7 @@ describe('Button Component', () => {
     const button = screen.getByRole('button', { name: /click me/i })
     expect(button).toHaveClass(
       'rounded-lg',
-      'bg-blue-500',
+      'bg-blue-600',
       'px-4',
       'py-2',
       'font-bold',

@@ -11,15 +11,17 @@ const HomePage = async (): Promise<React.ReactNode> => {
   const contentHtml = processedContent.toString()
 
   return (
-    <div className='markdown-body size-full' style={{ padding: '1rem' }}>
-      <Link
-        className='rounded-lg bg-blue-500 px-4 py-2 !text-white hover:bg-blue-700'
-        href='/example'
-      >
-        Example
-      </Link>
+    <main className='markdown-body size-full' style={{ padding: '1rem' }}>
+      <nav>
+        <Link
+          className='rounded-lg bg-blue-600 px-4 py-2 !text-white hover:bg-blue-800'
+          href='/example'
+        >
+          Example
+        </Link>
+      </nav>
       <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-    </div>
+    </main>
   )
 }
 
