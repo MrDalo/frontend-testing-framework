@@ -1,6 +1,6 @@
 import React from 'react'
-import { Counter } from '../components/counter'
-import Link from 'next/link'
+import { Counter } from '@/app/components/counter'
+import { Link } from '@/i18n/routing'
 
 const ExamplePage = (): React.ReactNode => (
   <div className='flex size-full flex-col items-center gap-4 py-10'>
