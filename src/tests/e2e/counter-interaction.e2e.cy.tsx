@@ -1,6 +1,6 @@
 describe('Counter interactoin', () => {
   it('interacts with button to increase or decrease counter', () => {
-    cy.visit('http://localhost:3000/example')
+    cy.visit('http://localhost:3000/en/example')
 
     cy.contains('0')
     /* ==== Generated with Cypress Studio ==== */
