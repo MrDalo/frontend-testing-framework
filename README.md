@@ -17,7 +17,7 @@ This template contains initialized testing environment for different testing typ
 - Performance testing
 - Accessibility testing
 - Security testing
-- Internationalization testing
+- Internationalization (i18n) testing
 - Cross-browser testing
 
 ### Tech-stack of the front-end application
@@ -56,6 +56,24 @@ This template contains initialized testing environment for different testing typ
 - Balance Test Coverage with Practicality: Striving for 100% test coverage can be impractical and time-consuming, while insufficient coverage leaves the application vulnerable to defects. Focus testing efforts on critical paths, high-risk areas, and frequently used features. Prioritizing quality over quantity ensures efficient use of resources.
 
 ## Testing
+
+### How to run all tests
+
+```bash
+npm run test:all
+```
+
+### How to run only Jest tests
+
+```bash
+npm run test
+```
+
+### How to run only Cypress tests
+
+```bash
+npm run test:cypress
+```
 
 ### Unit testing
 
@@ -96,12 +114,12 @@ This template contains initialized testing environment for different testing typ
 2. Run unit tests in watch mode:
 
    ```bash
-   npm run test:unit-watch
+   npm run test:unit:watch
    ```
 
 3. Run test coverage of unit tests:
    ```bash
-   npm run test:unit-coverage
+   npm run test:unit:coverage
    ```
 
 ### Integration testing
@@ -138,12 +156,12 @@ This template contains initialized testing environment for different testing typ
 2. Run integration tests in watch mode:
 
    ```bash
-   npm run test:integration-watch
+   npm run test:integration:watch
    ```
 
 3. Run test coverage of integration tests:
    ```bash
-   npm run test:integration-coverage
+   npm run test:integration:coverage
    ```
 
 ### End-to-End testing
@@ -199,13 +217,19 @@ Store visual tests in a `/tests/visual-tests/` folder, or integrate them with yo
 
 **How to Run**
 
-1. To run already created tests
+1. Start initial run which will capture actual snapshots (needed before run of the real visual regression test)
+
+```bash
+   npm run test:visual:initial
+```
+
+2. To run already created tests
 
 ```bash
    npm run test:visual
 ```
 
-2. To open GUI browser
+3. To open GUI browser
 
 ```bash
   npm run test:visual:open
@@ -229,7 +253,7 @@ Performance tests are often run via specialized CI configurations rather than in
 - API response times under stress
 
 **Folder & File Structure**  
-Store performance tests outputs into `/tests/performance-tests/` folder.
+Stores performance tests outputs into `/tests/performance-tests/` folder.
 
 **How to Run**
 
@@ -256,20 +280,20 @@ Store performance tests outputs into `/tests/performance-tests/` folder.
 You can keep these in `accessibility-tests/` or integrate with e2e tests (e.g., Cypress + cypress-axe plugin):
 
 Store accessibility tests into `/tests/accessibility-tests/` folder.
-Name you test case file like `<name-of-test>.accessibility.test.tsx`.
+Name you test case file like `<name-of-test>.accessibility.cy.tsx`.
 
 **How to Run**
 
 1. To run already created Cypress tests
 
 ```bash
-   npm run test:visual
+   npm run test:accessibility
 ```
 
 2. To open Cypress GUI browser
 
 ```bash
-  npm run test:visual:open
+  npm run test:accessibility:open
 ```
 
 3. To run performance test with accesibility testing using Lighthouse:
@@ -283,7 +307,7 @@ npm run test:performance
 **Tech Stack**
 
 - ESLint with [eslint-plugin-security](https://github.com/nodesecurity/eslint-plugin-security)
-- [OWASP ZAP](https://www.zaproxy.org/) (dynamic scanning)
+- [OWASP ZAP](https://www.zaproxy.org/) (dynamic scanning) - need to install addictional software
 
 **What to Test**
 
@@ -293,7 +317,7 @@ npm run test:performance
 - Secure HTTP headers
 
 **Folder & File Structure**  
-Typically, security scans and linting can be integrated into CI, not always in local test files. You might keep scripts or config in `/tests/security-tests/` folder.
+Typically, security scans and linting can be integrated into CI, or by using external software like [OWASP ZAP](https://www.zaproxy.org/).
 
 **How to Run**
 
@@ -328,7 +352,7 @@ Typically, security scans and linting can be integrated into CI, not always in l
 
 - When you want to do Interationalization testing in the unit tests level, you can create them as a part of unit test file and create separate `describe()` function for them or create new file called `<name-of-test>.i18n.test.tsxx` next to the `<name-of-component>.unit.test.tsx` file.
 
-- For E2E tests, store them in the `/tests/i18n-tests/` folder and name your file like `<name-of-test>.i18n.cy.tsx`.
+- For E2E tests, store them in the `/tests/i18n-tests/` folder and name your file like `<name-of-test>.i18n.cy.tsx` (there is required to add script for processing this `<name-of-test>.i18n.cy.tsx` to the package.json).
 
 **Key Considerations**
 
@@ -338,30 +362,60 @@ Typically, security scans and linting can be integrated into CI, not always in l
 
 **Tech Stack**
 
-- [BrowserStack](https://www.browserstack.com/) or [LambdaTest](https://www.lambdatest.com/) for cloud-based cross-browser environments
-- [Cypress](https://www.cypress.io/) or [Playwright](https://playwright.dev/) can be configured to run on multiple browsers
+- [Cypress](https://www.cypress.io/) configured to run e2e tests on multiple browsers
 
 **What to Test**
 
+- It makes sense to perform cross-browser testing on e2e tests to try out real scenarios of the application in multiple browsers
 - Ensure UI and functionality consistency across major browsers (Chrome, Firefox, Safari, Edge)
 - Responsive design across devices (mobile, tablet, desktop)
 
 **Folder & File Structure**  
-Store cross-browser tests into `/tests/cross-browser-tests/` folder.
+You can create separate cross-browser tests or run alredy created e2e tests as cross-browser tests.
+In case of your own cron-browser tests, store them into `/tests/cross-browser-tests/` folder.
 Name you test case file like `<name-of-test>.cross-browser.test.tsx`.
 
 **How to Run**
 
-- If using BrowserStack or LambdaTest with Cypress:
+- If you run cross-browser tests on Cypress e2e tests:
+
+  1. Chrome:
+
   ```bash
-  npm run cypress:run -- --browser chromium
+  npm run test:e2e:chrome
   ```
-  Then configure other browsers or run in the cloud environment.
+
+  2. Firefox:
+
+  ```bash
+  npm run test:e2e:firefox
+  ```
+
+  3. Edge:
+
+  ```bash
+  npm run test:e2e:edge
+  ```
+
+  4. Electron:
+
+  ```bash
+  npm run test:e2e:electron
+  ```
+
+  5. Run all browsers:
+
+  ```bash
+  npm run test:e2e:all-browsers
+  ```
 
 ## Final recommended folder structure
 
 ```bash
-.
+
+├── cypress/
+│   ├── support/
+│   │   └── e2e.ts
 ├── src/
 │   ├── app/                        # Next.js App Router directory
 │   │   ├── layout.tsx
@@ -370,27 +424,27 @@ Name you test case file like `<name-of-test>.cross-browser.test.tsx`.
 │   │   └── SomeComponent/
 │   │       ├── SomeComponent.tsx
 │   │       └── __tests__/
-│   │           ├── SomeComponent.unit.test.ts
-│   │           ├── SomeComponent.visual.test.ts
-│   │           └── SomeComponent.integration.test.ts
+│   │           ├── SomeComponent.unit.test.tsx
+│   │           ├── SomeComponent.visual.test.tsx
+│   │           └── SomeComponent.i18n.test.tsx
 │   └── tests/
 │       ├── e2e/
 │       │   ├── login.e2e.cy.ts
 │       │   └── dashboard.e2e.cy.ts
 │       ├── visual-tests/
-│       │   └── dashboard.visual.test.ts
+│       │   └── dashboard.visual.cy.ts
 │       ├── performance-tests/
-│       │   └── profile-page.performance.test.ts
+│       │   ├── lighthouse-report.report.json
+│       │   └── lighthouse-report.report.html
 │       ├── accessibility-tests/
-│       │   └── profile-page.accessibility.test.ts
-│       ├── security-tests/
-│       │   └── security-test.config.ts
+│       │   └── profile-page.accessibility.cy.tsx
 │       ├── i18n-tests/
-│       │   └── profile-data.i18n.test.ts
-│       ├── cross-browser-tests/
+│       │   └── profile-data.i18n.cy.tsx
+│       └── cross-browser-tests/
 │           └── profile-page.cross-browser.test.ts
-├── jest.config.js
-├── cypress.config.js
+├── jest.config.ts
+├── jest.setup.ts
+├── cypress.config.ts
 ├── package.json
 └── README.md
 └── ...
