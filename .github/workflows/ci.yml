@@ -1,0 +1,198 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────
+  # 1) LINT + SECURITY CHECKS
+  # ─────────────────────────────────────────────────────────────────────────
+  lint-security:
+    name: Lint & Security Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Use Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (includes plugin-security)
+        run: npm run lint
+
+      # or optionally "npm run lint:nowarn" if you prefer
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # 2) JEST TESTS (UNIT, INTEGRATION, I18N)
+  # ─────────────────────────────────────────────────────────────────────────
+  jest-tests:
+    name: Unit / Integration / i18n Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Use Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Run Integration Tests
+        run: npm run test:integration
+
+      - name: Run i18n Tests
+        run: npm run test:i18n
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # 3) BUILD NEXT.JS
+  # ─────────────────────────────────────────────────────────────────────────
+  build-nextjs:
+    name: Build Next.js
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Use Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Archive production build
+        run: tar -czf build_artifacts.tgz .next
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-build
+          path: build_artifacts.tgz
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # 4) E2E / VISUAL / ACCESSIBILITY TESTS
+  # ─────────────────────────────────────────────────────────────────────────
+  e2e-tests:
+    name: E2E / Visual / Accessibility
+    runs-on: ubuntu-latest
+    needs: [build-nextjs]
+    strategy:
+      # Optional parallel: run multiple OS or concurrency
+      # fail-fast: false
+      matrix:
+        browser: [chrome, firefox, edge]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Use Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: next-build
+
+      - name: Extract build
+        run: tar -xzf build_artifacts.tgz
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Start Next.js in the background
+      - name: Start Next.js
+        run: npm start &
+
+      - name: Wait on port 3000
+        uses: w9jds/wait@v1
+        with:
+          port: 3000
+          timeout: 60
+
+      # E2E test in the matrix browser
+      - name: Run E2E in ${{ matrix.browser }}
+        run: |
+          npm run test:e2e:${{ matrix.browser }}
+
+      # Visual Test (initial + compare) -- only run if matrix.browser == chrome, for instance
+      - name: Visual Initial
+        if: matrix.browser == 'chrome'
+        run: npm run test:visual:initial
+
+      - name: Visual Compare
+        if: matrix.browser == 'chrome'
+        run: npm run test:visual
+
+      # Accessibility tests -- only run in one browser or all, your choice
+      - name: Accessibility
+        if: matrix.browser == 'chrome'
+        run: npm run test:accessibility
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # 5) PERFORMANCE TESTS (LIGHTHOUSE)
+  # ─────────────────────────────────────────────────────────────────────────
+  performance-tests:
+    name: Performance Tests (Lighthouse)
+    runs-on: ubuntu-latest
+    needs: [build-nextjs]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Use Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: next-build
+
+      - name: Extract build
+        run: tar -xzf build_artifacts.tgz
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Start Next.js in the background
+      - name: Start Next.js
+        run: npm start &
+
+      - name: Wait on port 3000
+        uses: w9jds/wait@v1
+        with:
+          port: 3000
+          timeout: 60
+
+      - name: Lighthouse
+        run: npm run test:performance
+
+      - name: Archive Performance Reports
+        run: ls -lah src/tests/performance-tests
+
+      - name: Upload performance artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-report
+          path: src/tests/performance-tests
