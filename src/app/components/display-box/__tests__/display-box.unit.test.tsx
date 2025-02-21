@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import DisplayBox from '../display-box'
+import { nextIntlRenderer } from '@/lib/test-utils/next-intl'
 
 describe('DisplayBox Component', () => {
   const setup = (count: number) => {
-    render(<DisplayBox count={count} />)
+    nextIntlRenderer(<DisplayBox count={count} />)
     return {
       getContainer: (): HTMLElement => screen.getByTestId('display-box'),
       getDisplayValue: (): HTMLElement => screen.getByText(count.toString()),
@@ -62,7 +63,7 @@ describe('DisplayBox Component', () => {
 
   describe('updates', () => {
     it('updates styling when count changes from positive to negative', () => {
-      const { rerender } = render(<DisplayBox count={5} />)
+      const { rerender } = nextIntlRenderer(<DisplayBox count={5} />)
       let container = screen.getByTestId('display-box')
       expect(container.className).toContain('bg-green-300')
       expect(container.className).not.toContain('bg-red-300')
@@ -74,7 +75,7 @@ describe('DisplayBox Component', () => {
     })
 
     it('updates styling when count changes from negative to positive', () => {
-      const { rerender } = render(<DisplayBox count={-5} />)
+      const { rerender } = nextIntlRenderer(<DisplayBox count={-5} />)
       let container = screen.getByTestId('display-box')
       expect(container.className).toContain('bg-red-300')
       expect(container.className).not.toContain('bg-green-300')

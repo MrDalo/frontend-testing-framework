@@ -75,7 +75,7 @@ This template contains initialized testing environment for different testing typ
 #### Folder structure:
 
 - In each folder (component / zustand store / utility / react query / server action / custom hook) create `__tests__` folder where we will put all tests.
-- In this `__tests__` folder, create unit test file `<name-of-component>.unit.test.ts`. Here we will write unit tests.
+- In this `__tests__` folder, create unit test file `<name-of-component>.unit.test.tsx`. Here we will write unit tests.
 
 #### Test structure:
 
@@ -123,7 +123,7 @@ This template contains initialized testing environment for different testing typ
 #### Folder structure:
 
 - In each folder (component / zustand store / utility / react query / server action / custom hook) create `__tests__` folder where we will put all tests.
-- In this `__tests__` folder, create integration test file `<name-of-component>.integration.test.ts`. Here we will write integration tests.
+- In this `__tests__` folder, create integration test file `<name-of-component>.integration.test.tsx`. Here we will write integration tests.
 
 #### Test structure:
 
@@ -160,7 +160,7 @@ This template contains initialized testing environment for different testing typ
 
 #### Folder structure:
 
-- In the `/tests/e2e` folder create test files `<name-of-test>.e2e.cy.ts`. Here we will write end-to-end tests.
+- In the `/tests/e2e` folder create test files `<name-of-test>.e2e.cy.tsx`. Here we will write end-to-end tests.
 
 #### Test structure:
 
@@ -195,7 +195,7 @@ This template contains initialized testing environment for different testing typ
 - Theming or styling changes
 
 **Folder & File Structure**  
-Store visual tests in a `/tests/visual-tests/` folder, or integrate them with your existing Cypress E2E tests. Name you test file like `<name-of-test>.visual.test.ts`.
+Store visual tests in a `/tests/visual-tests/` folder, or integrate them with your existing Cypress E2E tests. Name you test file like `<name-of-test>.visual.test.tsx`.
 
 **How to Run**
 
@@ -256,7 +256,7 @@ Store performance tests outputs into `/tests/performance-tests/` folder.
 You can keep these in `accessibility-tests/` or integrate with e2e tests (e.g., Cypress + cypress-axe plugin):
 
 Store accessibility tests into `/tests/accessibility-tests/` folder.
-Name you test case file like `<name-of-test>.accessibility.test.ts`.
+Name you test case file like `<name-of-test>.accessibility.test.tsx`.
 
 **How to Run**
 
@@ -326,9 +326,9 @@ Typically, security scans and linting can be integrated into CI, not always in l
 
 **Folder & File Structure**
 
-- When you want to do Interationalization testing in the unit tests level, you can create them as a part of unit test file and create separate `describe()` function for them or create new file called `<name-of-test>.i18n.test.ts` next to the `<name-of-component>.unit.test.ts` file.
+- When you want to do Interationalization testing in the unit tests level, you can create them as a part of unit test file and create separate `describe()` function for them or create new file called `<name-of-test>.i18n.test.tsxx` next to the `<name-of-component>.unit.test.tsx` file.
 
-- For E2E tests, store them in the `/tests/i18n-tests/` folder and name your file like `<name-of-test>.i18n.test.ts`.
+- For E2E tests, store them in the `/tests/i18n-tests/` folder and name your file like `<name-of-test>.i18n.cy.tsx`.
 
 **Key Considerations**
 
@@ -348,7 +348,7 @@ Typically, security scans and linting can be integrated into CI, not always in l
 
 **Folder & File Structure**  
 Store cross-browser tests into `/tests/cross-browser-tests/` folder.
-Name you test case file like `<name-of-test>.cross-browser.test.ts`.
+Name you test case file like `<name-of-test>.cross-browser.test.tsx`.
 
 **How to Run**
 

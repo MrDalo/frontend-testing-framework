@@ -44,7 +44,7 @@ describe('Button Component', () => {
       'py-2',
       'font-bold',
       'text-white',
-      'hover:bg-blue-700'
+      'hover:bg-blue-800'
     )
   })
 })

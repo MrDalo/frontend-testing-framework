@@ -6,8 +6,8 @@
   },
   "ExamplePage": {
     "title": "Example with interactive component",
-    "increase": "Increase",
-    "decrease": "Decrease",
+    "increment": "Increment",
+    "decrement": "Decrement",
     "back": "Back to home"
   }
 }

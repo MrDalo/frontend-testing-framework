@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { render, screen, fireEvent } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 import Counter from '../counter'
+import { nextIntlRenderer } from '@/lib/test-utils/next-intl'
 
 describe('Counter Component', () => {
   const setup = () => {
-    render(<Counter />)
+    nextIntlRenderer(<Counter />)
     return {
       incrementButton: screen.getByRole('button', { name: /increment/i }),
       decrementButton: screen.getByRole('button', { name: /decrement/i }),

@@ -18,7 +18,11 @@ const config: Config = {
    *
    * We'll override this in scripts via --testMatch to narrow down which ones run.
    */
-  testMatch: ['**/*.unit.test.[jt]s?(x)', '**/*.integration.test.[jt]s?(x)'],
+  testMatch: [
+    '**/*.unit.test.[jt]s?(x)',
+    '**/*.integration.test.[jt]s?(x)',
+    '**/*.i18n.test.[jt]s?(x)',
+  ],
 
   transformIgnorePatterns: [
     'node_modules/(?!(jose)/)', // e.g., transform `jose` module

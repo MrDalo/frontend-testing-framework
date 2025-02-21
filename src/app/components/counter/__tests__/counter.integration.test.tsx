@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Counter from '../counter'
+import { nextIntlRenderer } from '@/lib/test-utils/next-intl'
 
 describe('Counter Integration Test', () => {
   test('increments and decrements correctly, updating the DisplayBox color', async () => {
     // Arrange
-    render(<Counter />)
+    nextIntlRenderer(<Counter />)
 
     // Act
     // We expect two buttons: Increment and Decrement

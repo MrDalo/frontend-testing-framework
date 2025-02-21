@@ -12,8 +12,8 @@ const Counter = (): React.ReactNode => {
     <div className='flex flex-col items-center justify-center space-y-4'>
       <DisplayBox count={count} />
       <div className='flex space-x-4'>
-        <Button label={t('increase')} onClickFn={() => setCount(count + 1)} />
-        <Button label={t('decrease')} onClickFn={() => setCount(count - 1)} />
+        <Button label={t('increment')} onClickFn={() => setCount(count + 1)} />
+        <Button label={t('decrement')} onClickFn={() => setCount(count - 1)} />
       </div>
     </div>
   )
