@@ -2,7 +2,7 @@ import { logAccessibilityViolations } from '../utils/logAccessibilityViolations'
 
 describe('Homepage Accessibility', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/en')
     cy.injectAxe()
   })
 
