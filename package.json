@@ -30,7 +30,7 @@
     "test:visual:open": "cypress open --config-file cypress.config.ts --config \"specPattern='src/tests/visual-tests/**/*.visual.cy.{ts,tsx}'\"",
     "test:accessibility": "cypress run --config-file cypress.config.ts --spec 'src/tests/accessibility-tests/**/*.accessibility.cy.{ts,tsx}'",
     "test:accessibility:open": "cypress open --config-file cypress.config.ts --config \"specPattern='src/tests/accessibility-tests/**/*.accessibility.cy.{ts,tsx}'\"",
-    "test:performance": "lighthouse http://localhost:3000 --output json --output html --view --output-path ./src/tests/performance-tests/lighthouse-report",
+    "test:performance": "lighthouse http://localhost:3000 --chrome-flags='--no-sandbox --headless=new' --output json --output html --view --output-path ./src/tests/performance-tests/lighthouse-report",
     "test:e2e:chrome": "cypress run --config-file cypress.config.ts --browser chrome --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
     "test:e2e:firefox": "cypress run --config-file cypress.config.ts --browser firefox --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
     "test:e2e:edge": "cypress run --config-file cypress.config.ts --browser edge --spec 'src/tests/e2e/**/*.e2e.cy.{ts,tsx}'",
