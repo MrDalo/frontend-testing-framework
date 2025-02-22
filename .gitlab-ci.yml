@@ -1,0 +1,101 @@
+image: node:20
+
+variables:
+  GIT_STRATEGY: fetch
+
+stages:
+  - lint
+  - test
+  - build
+  - e2e
+  - performance
+
+# ─────────────────────────────────────────────────────────────────────────
+# 1) LINT + SECURITY CHECKS
+# ─────────────────────────────────────────────────────────────────────────
+lint-security:
+  stage: lint
+  script:
+    - npm ci
+    - npm run lint:ci
+
+# ─────────────────────────────────────────────────────────────────────────
+# 2) JEST TESTS (UNIT, INTEGRATION, I18N)
+# ─────────────────────────────────────────────────────────────────────────
+jest-tests:
+  stage: test
+  script:
+    - npm ci
+    - npm run test:unit
+    - npm run test:integration
+    - npm run test:i18n
+
+# ─────────────────────────────────────────────────────────────────────────
+# 3) BUILD NEXT.JS
+# ─────────────────────────────────────────────────────────────────────────
+build-nextjs:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+    - tar -czf build_artifacts.tgz .next
+  artifacts:
+    paths:
+      - build_artifacts.tgz
+    expire_in: 1 day
+
+# ─────────────────────────────────────────────────────────────────────────
+# 4) E2E / VISUAL / ACCESSIBILITY TESTS
+# ─────────────────────────────────────────────────────────────────────────
+.e2e-test-template: &e2e-test-definition
+  stage: e2e
+  dependencies:
+    - build-nextjs
+  before_script:
+    - npm ci
+    - tar -xzf build_artifacts.tgz
+    - npm start &
+    - wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for | sh -s -- localhost:3000 -- echo "Next.js is up"
+
+e2e-chrome:
+  <<: *e2e-test-definition
+  script:
+    - npm run test:e2e:chrome
+    - npm run test:visual:initial
+    - npm run test:visual
+    - npm run test:accessibility
+
+e2e-firefox:
+  <<: *e2e-test-definition
+  script:
+    - npm run test:e2e:firefox
+
+e2e-edge:
+  <<: *e2e-test-definition
+  script:
+    - npm run test:e2e:edge
+
+e2e-electron:
+  <<: *e2e-test-definition
+  script:
+    - npm run test:e2e:electron
+
+# ─────────────────────────────────────────────────────────────────────────
+# 5) PERFORMANCE TESTS (LIGHTHOUSE)
+# ─────────────────────────────────────────────────────────────────────────
+performance-tests:
+  stage: performance
+  dependencies:
+    - build-nextjs
+  script:
+    - npm ci
+    - tar -xzf build_artifacts.tgz
+    - npm start &
+    - wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for | sh -s -- localhost:3000 -- echo "Next.js is up"
+    - mkdir -p ./tmp/artifacts
+    - npm install -g lighthouse
+    - lighthouse http://localhost:3000 --chrome-flags="--no-sandbox --headless=new" --output json --output html --output-path ./tmp/artifacts/lighthouse-report
+  artifacts:
+    paths:
+      - ./tmp/artifacts
+    expire_in: 1 week
