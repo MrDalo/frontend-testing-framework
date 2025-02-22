@@ -26,7 +26,7 @@ jobs:
         run: npm ci
 
       - name: Lint (includes plugin-security)
-        run: npm run lint
+        run: npm run lint:ci
 
       # or optionally "npm run lint:nowarn" if you prefer
 

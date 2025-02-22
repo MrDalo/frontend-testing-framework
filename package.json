@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:nowarn": "eslint . --max-warnings 0",
+    "lint:ci": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --max-warnings 0 --fix --cache",
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "test": "jest",

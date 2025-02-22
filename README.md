@@ -324,11 +324,13 @@ Typically, security scans and linting can be integrated into CI, or by using ext
 - ESLint security checks:
 
   ```bash
-  npm run lint
+  npm run lint:ci
   ```
 
+  or
+
   ```bash
-  npm run lint:nowarn
+  npm run lint:fix
   ```
 
 - OWASP ZAP dynamic scan:
