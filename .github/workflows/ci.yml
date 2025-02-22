@@ -98,7 +98,7 @@ jobs:
       # Optional parallel: run multiple OS or concurrency
       # fail-fast: false
       matrix:
-        browser: [chrome, firefox, edge]
+        browser: [chrome, firefox, edge, electron]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
