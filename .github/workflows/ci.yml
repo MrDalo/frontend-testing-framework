@@ -124,8 +124,9 @@ jobs:
         run: npm start &
 
       - name: Wait on port 3000
-        uses: w9jds/wait@v1
+        uses: lukka/run-wait-port@v1
         with:
+          host: localhost
           port: 3000
           timeout: 60
 
@@ -180,8 +181,9 @@ jobs:
         run: npm start &
 
       - name: Wait on port 3000
-        uses: w9jds/wait@v1
+        uses: lukka/run-wait-port@v1
         with:
+          host: localhost
           port: 3000
           timeout: 60
 
