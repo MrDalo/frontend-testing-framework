@@ -179,17 +179,19 @@ jobs:
 
       - name: Wait on port 3000
         run: |
-          wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for | sh -s -- localhost:3000 -- echo "Next.js is up"[1]
+          wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for | sh -s -- localhost:3000 -- echo "Next.js is up"
 
+      - name: Create artifacts directory
+        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
 
-      - name: Lighthouse
-        run: npm run test:performance
+      - name: Run Lighthouse Check
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          urls: 'http://localhost:3000'
 
-      - name: Archive Performance Reports
-        run: ls -lah src/tests/performance-tests
-
-      - name: Upload performance artifacts
+      - name: Upload Lighthouse reports
         uses: actions/upload-artifact@v4
         with:
-          name: performance-report
-          path: src/tests/performance-tests
+          name: lighthouse-reports
+          path: ${{ github.workspace }}/tmp/artifacts
