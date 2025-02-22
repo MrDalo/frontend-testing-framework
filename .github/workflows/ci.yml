@@ -124,10 +124,8 @@ jobs:
         run: npm start &
 
       - name: Wait on port 3000
-        uses: alexfidanov/wait-for-port@v1
-        with:
-          port: 3000
-          timeout: 60
+        run: |
+          wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for | sh -s -- localhost:3000 -- echo "Next.js is up"[1]
 
       # E2E test in the matrix browser
       - name: Run E2E in ${{ matrix.browser }}
@@ -180,10 +178,9 @@ jobs:
         run: npm start &
 
       - name: Wait on port 3000
-        uses: alexfidanov/wait-for-port@v1
-        with:
-          port: 3000
-          timeout: 60
+        run: |
+          wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for | sh -s -- localhost:3000 -- echo "Next.js is up"[1]
+
 
       - name: Lighthouse
         run: npm run test:performance
