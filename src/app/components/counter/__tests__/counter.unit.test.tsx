@@ -9,7 +9,7 @@ describe('Counter Component', () => {
     return {
       incrementButton: screen.getByRole('button', { name: /increment/i }),
       decrementButton: screen.getByRole('button', { name: /decrement/i }),
-      getCountDisplay: (): HTMLElement => screen.getByText(/^-?\d+$/), // Matches any number, including negative
+      getCountDisplay: (): HTMLElement => screen.getByText(/^-?\d+$/),
     }
   }
 
@@ -44,15 +44,15 @@ describe('Counter Component', () => {
   it('handles multiple increments and decrements correctly', () => {
     const { incrementButton, decrementButton, getCountDisplay } = setup()
 
-    fireEvent.click(incrementButton) // 1
-    fireEvent.click(incrementButton) // 2
-    fireEvent.click(decrementButton) // 1
-    fireEvent.click(incrementButton) // 2
+    fireEvent.click(incrementButton)
+    fireEvent.click(incrementButton)
+    fireEvent.click(decrementButton)
+    fireEvent.click(incrementButton)
     expect(getCountDisplay()).toHaveTextContent('2')
 
-    fireEvent.click(decrementButton) // 1
-    fireEvent.click(decrementButton) // 0
-    fireEvent.click(decrementButton) // -1
+    fireEvent.click(decrementButton)
+    fireEvent.click(decrementButton)
+    fireEvent.click(decrementButton)
     expect(getCountDisplay()).toHaveTextContent('-1')
   })
 

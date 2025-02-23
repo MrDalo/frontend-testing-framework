@@ -8,7 +8,6 @@ import deMessages from '../../../messages/de.json'
 import { render } from '@testing-library/react'
 import { SupportedLocales } from '@/types/global'
 
-// Define the available locales and messages
 const locales: { [key: string]: AbstractIntlMessages } = {
   en: enMessages,
   de: deMessages,

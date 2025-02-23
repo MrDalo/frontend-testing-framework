@@ -1,5 +1,3 @@
-// src/app/components/counter/__tests__/Counter.i18n.test.tsx
-
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Counter from '../counter'
@@ -7,7 +5,6 @@ import { NextIntlWrapper } from '@/lib/test-utils/next-intl'
 
 describe('Counter i18n tests', () => {
   it('renders English labels by default', () => {
-    // Provide the English locale
     render(
       <NextIntlWrapper locale='en'>
         <Counter />

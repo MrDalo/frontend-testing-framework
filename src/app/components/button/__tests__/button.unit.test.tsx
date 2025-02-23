@@ -2,10 +2,8 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import Button from '../button'
 
 describe('Button Component', () => {
-  // Mock function for onClick handler
   const mockOnClick = jest.fn()
 
-  // Reset mock function before each test
   beforeEach(() => {
     mockOnClick.mockClear()
   })

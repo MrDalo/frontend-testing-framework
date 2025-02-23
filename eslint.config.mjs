@@ -7,7 +7,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
-import security from 'eslint-plugin-security' // 1) Import the security plugin
+import security from 'eslint-plugin-security'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -31,7 +31,6 @@ export default [
       '**/.gitignore',
     ],
   },
-  // 2) Extend the recommended config from security
   ...fixupConfigRules(
     compat.extends(
       'next',

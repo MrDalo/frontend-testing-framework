@@ -1,13 +1,7 @@
 {
-  // Inherit most settings from the root tsconfig if you want.
-  // Adjust the relative path as necessary.
   "extends": "../../tsconfig.json",
 
   "compilerOptions": {
-    // We override the "types" to load Cypress definitions instead of Jest
-    // "types": ["cypress"]
-
-    // If you need Node types for your E2E tests, add them here
     "types": ["cypress", "node", "cypress-axe"]
   },
   "ts-node": {
