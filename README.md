@@ -213,7 +213,7 @@ npm run test:cypress
 - Theming or styling changes
 
 **Folder & File Structure**  
-Store visual tests in a `/tests/visual-tests/` folder, or integrate them with your existing Cypress E2E tests. Name you test file like `<name-of-test>.visual.test.tsx`.
+Store visual tests in a `/tests/visual-tests/` folder, or integrate them with your existing Cypress E2E tests. Name you test file like `<name-of-test>.visual.cy.tsx`.
 
 **How to Run**
 
@@ -352,7 +352,7 @@ Typically, security scans and linting can be integrated into CI, or by using ext
 
 **Folder & File Structure**
 
-- When you want to do Interationalization testing in the unit tests level, you can create them as a part of unit test file and create separate `describe()` function for them or create new file called `<name-of-test>.i18n.test.tsxx` next to the `<name-of-component>.unit.test.tsx` file.
+- When you want to do Interationalization testing in the unit tests level, you can create them as a part of unit test file and create separate `describe()` function for them or create new file called `<name-of-test>.i18n.test.tsx` next to the `<name-of-component>.unit.test.tsx` file.
 
 - For E2E tests, store them in the `/tests/i18n-tests/` folder and name your file like `<name-of-test>.i18n.cy.tsx` (there is required to add script for processing this `<name-of-test>.i18n.cy.tsx` to the package.json).
 
@@ -373,9 +373,9 @@ Typically, security scans and linting can be integrated into CI, or by using ext
 - Responsive design across devices (mobile, tablet, desktop)
 
 **Folder & File Structure**  
-You can create separate cross-browser tests or run alredy created e2e tests as cross-browser tests.
+You can create separate cross-browser tests or run already created e2e tests as cross-browser tests.
 In case of your own cron-browser tests, store them into `/tests/cross-browser-tests/` folder.
-Name you test case file like `<name-of-test>.cross-browser.test.tsx`.
+Name you test case file like `<name-of-test>.cross-browser.cy.tsx`.
 
 **How to Run**
 
@@ -419,15 +419,15 @@ Name you test case file like `<name-of-test>.cross-browser.test.tsx`.
 │   ├── support/
 │   │   └── e2e.ts
 ├── src/
-│   ├── app/                        # Next.js App Router directory
+│   ├── app/
 │   │   ├── layout.tsx
-│   │   └── ...                     # Other Next.js route files or folders
+│   │   └── ...
 │   ├── components/
 │   │   └── SomeComponent/
 │   │       ├── SomeComponent.tsx
 │   │       └── __tests__/
 │   │           ├── SomeComponent.unit.test.tsx
-│   │           ├── SomeComponent.visual.test.tsx
+│   │           ├── SomeComponent.integration.test.tsx
 │   │           └── SomeComponent.i18n.test.tsx
 │   └── tests/
 │       ├── e2e/
@@ -443,7 +443,7 @@ Name you test case file like `<name-of-test>.cross-browser.test.tsx`.
 │       ├── i18n-tests/
 │       │   └── profile-data.i18n.cy.tsx
 │       └── cross-browser-tests/
-│           └── profile-page.cross-browser.test.ts
+│           └── profile-page.cross-browser.cy.ts
 ├── jest.config.ts
 ├── jest.setup.ts
 ├── cypress.config.ts
