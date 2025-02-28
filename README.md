@@ -6,7 +6,7 @@ Master thesis **_"Development of a Front-End Testing Framework: Strategies, Tool
 
 ## Introduction
 
-This is the template repository which serves as a starting point for implementation of the **Front-end Testing Framework** created by Dalibor Králik as a master thesis at **Masaryk University Faculty of Informatics**.
+This is the template repository which serves as a starting point for implementation of the **Front-end Testing Framework: : A Practical Guide** created by Dalibor Králik as a master thesis at **Masaryk University Faculty of Informatics**.
 
 This template contains initialized testing environment for different testing type like:
 
@@ -19,6 +19,20 @@ This template contains initialized testing environment for different testing typ
 - Security testing
 - Internationalization (i18n) testing
 - Cross-browser testing
+
+### Front-end Testing Framework: A Practical Guide PDF
+
+As part of this repository there is a Frontend_Testing_Framework\_\_A_Practical_Guide.pdf which contains Front-end testing guide.
+
+This guide presents a comprehensive, actionable framework for front-end testing that spans the entire spectrum of testing techniques. Based on the research and practical experiences documented in the master thesis ”Development of a Front-End Testing Framework: Strategies, Tools, and Implementation” at Masaryk University Faculty of Informatics, this PDF provides clear, step-by-step instructions and best practices of fro.nt-end testing
+
+By following the guidelines, front-end teams can:
+
+- Catch defects early and reduce technical debt.
+- Ensure consistency and reliability across various user scenarios.
+- Improve overall code quality while streamlining development workflows.
+
+Ultimately, this guide aims to bridge the gap between academic research and practical application, empowering developers to adopt a robust, multi-layered testing strategy that meets the demands of modern web applications.
 
 ### Tech-stack of the front-end application
 
