@@ -59,6 +59,22 @@ Ultimately, this guide aims to bridge the gap between academic research and prac
    Adjust folder structure to your team’s preferences.
    Integrate with your CI/CD pipeline for continuous validation.
 
+### Docker
+
+Dockerfile is part of this repository.
+
+1. To build an image:
+
+```bash
+docker build -t frontend-testing-framework .
+```
+
+2. To run a container from the image:
+
+```bash
+docker run --name frontend-testing-framework -p 3000:3000 frontend-testing-framework
+```
+
 ## Best Practices
 
 - Keep Tests Atomic: Especially unit tests—small, isolated, and fast.
