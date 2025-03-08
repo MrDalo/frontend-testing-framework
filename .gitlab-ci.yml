@@ -31,67 +31,50 @@ jest-tests:
     - npm run test:i18n
 
 # ─────────────────────────────────────────────────────────────────────────
-# 3) BUILD NEXT.JS
+# 3) BUILD NEXT.JS DOCKER IMAGE
 # ─────────────────────────────────────────────────────────────────────────
 build-nextjs:
   stage: build
   script:
     - npm ci
     - npm run build
-    - tar -czf build_artifacts.tgz .next
+    - docker build -t frontend-testing-framework:latest .
+    - docker save frontend-testing-framework:latest -o image.tar
   artifacts:
     paths:
-      - build_artifacts.tgz
+      - image.tar
     expire_in: 1 day
 
 # ─────────────────────────────────────────────────────────────────────────
-# 4) E2E / VISUAL / ACCESSIBILITY TESTS
+# 4) E2E / VISUAL / ACCESSIBILITY TESTS USING DOCKER
 # ─────────────────────────────────────────────────────────────────────────
-.e2e-test-template: &e2e-test-definition
+e2e-tests:
   stage: e2e
   image: cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1
+  services:
+    - docker:dind
   dependencies:
     - build-nextjs
-  before_script:
-    # Remove problematic source lists first
-    - rm -f /etc/apt/sources.list.d/microsoft-edge-stable.list /etc/apt/sources.list.d/microsoft-edge.list
-    - rm -f /etc/apt/sources.list.d/google-chrome.list
-    # Then update and install dependencies
-    - apt-get update -y
-    - apt-get install -y curl gnupg
-    - npm ci
-    - tar -xzf build_artifacts.tgz
-    - npm start &
-    - timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 5; done' || false
-
-e2e-chrome:
-  <<: *e2e-test-definition
   script:
+    - npm ci
+    - docker load -i image.tar
+    - docker run -d --name myapp -p 3000:3000 frontend-testing-framework:latest
+    - |
+      # Wait until Next.js is up and running
+      until curl -s localhost:3000 | grep -q "Next.js"; do 
+        echo "Waiting for Next.js to start...";
+        sleep 5;
+      done
     - npm run test:e2e:chrome
     - npm run test:visual:initial
     - npm run test:visual
     - npm run test:accessibility
+    - docker stop myapp && docker rm myapp
   artifacts:
-    when: always
     paths:
-      - ./cypress/screenshots/**/*
-      - ./cypress/videos/**/*
+      - cypress/screenshots
+      - cypress/videos
     expire_in: 1 week
-
-# e2e-firefox:
-#   <<: *e2e-test-definition
-#   script:
-#     - npm run test:e2e:firefox
-
-# e2e-edge:
-#   <<: *e2e-test-definition
-#   script:
-#     - npm run test:e2e:edge
-
-# e2e-electron:
-#   <<: *e2e-test-definition
-#   script:
-#     - npm run test:e2e:electron
 
 # ─────────────────────────────────────────────────────────────────────────
 # 5) PERFORMANCE TESTS (LIGHTHOUSE)
@@ -99,22 +82,24 @@ e2e-chrome:
 performance-tests:
   stage: performance
   image: cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1
+  services:
+    - docker:dind
   dependencies:
     - build-nextjs
   script:
-    # Remove problematic source lists first
-    - rm -f /etc/apt/sources.list.d/microsoft-edge-stable.list /etc/apt/sources.list.d/microsoft-edge.list
-    - rm -f /etc/apt/sources.list.d/google-chrome.list
-    # Then update and install dependencies
-    - apt-get update -y
-    - apt-get install -y curl gnupg chromium-browser
     - npm ci
-    - tar -xzf build_artifacts.tgz
-    - npm start &
-    - timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 5; done' || false
-    - mkdir -p ./tmp/artifacts
+    - docker load -i image.tar
+    - docker run -d --name myapp -p 3000:3000 frontend-testing-framework:latest
+    - |
+      # Wait until Next.js is up and running
+      until curl -s localhost:3000 | grep -q "Next.js"; do 
+        echo "Waiting for Next.js to start...";
+        sleep 5;
+      done
     - npm install -g lighthouse
+    - mkdir -p ./tmp/artifacts
     - lighthouse http://localhost:3000 --chrome-flags="--no-sandbox --headless=new" --output json --output html --output-path ./tmp/artifacts/lighthouse-report
+    - docker stop myapp && docker rm myapp
   artifacts:
     paths:
       - ./tmp/artifacts

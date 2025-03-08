@@ -20,6 +20,7 @@
   COPY --from=builder /app/.next ./.next
   COPY --from=builder /app/public ./public
   COPY --from=builder /app/README.md ./README.md
+  COPY --from=builder /app/cypress ./cypress
   
   EXPOSE 3000
   
