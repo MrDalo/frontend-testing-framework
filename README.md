@@ -390,6 +390,25 @@ Typically, security scans and linting can be integrated into CI, or by using ext
 
 - Right-to-left (RTL) languages (e.g., Arabic) might need special layout checks.
 
+#### How to run (Jest tests):
+
+1. Run i18n tests once:
+
+   ```bash
+   npm run test:i18n
+   ```
+
+2. Run i18n tests in watch mode:
+
+   ```bash
+   npm run test:i18n:watch
+   ```
+
+3. Run test coverage of i18n tests:
+   ```bash
+   npm run test:i18n:coverage
+   ```
+
 ## Cross-Browser Testing
 
 **Tech Stack**
