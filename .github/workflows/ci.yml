@@ -29,9 +29,9 @@ jobs:
         run: npm run lint:ci
 
   # ─────────────────────────────────────────────────────────────────────────
-  # 2) JEST TESTS (UNIT, INTEGRATION, I18N)
+  # 2) VITEST TESTS (UNIT, INTEGRATION, I18N)
   # ─────────────────────────────────────────────────────────────────────────
-  jest-tests:
+  vitest-tests:
     name: Unit / Integration / i18n Tests
     runs-on: ubuntu-latest
     steps:

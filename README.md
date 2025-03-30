@@ -93,10 +93,16 @@ docker run --name frontend-testing-framework -p 3000:3000 frontend-testing-frame
 npm run test:all
 ```
 
-### How to run only Jest tests
+### How to run only Vitest tests
 
 ```bash
 npm run test
+```
+
+### How to run only Vitest tests within browser preview
+
+```bash
+npm run test:ui
 ```
 
 ### How to run only Cypress tests
@@ -109,7 +115,7 @@ npm run test:cypress
 
 #### Tech-stack
 
-- [Jest](https://www.npmjs.com/package/jest)
+- [Vitest](https://www.npmjs.com/package/vitest)
 - [React Testing Library](https://www.npmjs.com/package/@testing-library/dom)
 
 #### What to test:
@@ -129,7 +135,7 @@ npm run test:cypress
 
 - Descriptive Test Names: Use descriptive names for your test cases to clearly indicate what is being tested.
 - Arrange-Act-Assert Pattern: Structure your tests using the Arrange-Act-Assert pattern to make them more readable.
-- Mock External Dependencies: Use libraries like jest.mock() to mock API calls and other external dependencies.
+- Mock External Dependencies: Use commands like vitest.mock() to mock API calls and other external dependencies.
 - Test Edge Cases and Error Handling
 - Setup and Teardown: Use beforeEach() and afterEach() to set up and clean up before and after tests.
 
@@ -156,7 +162,7 @@ npm run test:cypress
 
 #### Tech-stack
 
-- [Jest](https://www.npmjs.com/package/jest)
+- [Vitest](https://www.npmjs.com/package/vitest)
 - [React Testing Library](https://www.npmjs.com/package/@testing-library/dom)
 
 #### What to test:
@@ -370,7 +376,7 @@ Typically, security scans and linting can be integrated into CI, or by using ext
 
 **Tech Stack**
 
-- [Jest](https://jestjs.io/) (unit/integration for locale logic)
+- [Vitest](https://vitest.dev/) (unit/integration for locale logic)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for verifying UI changes based on locale
 - [Cypress](https://www.npmjs.com/package/cypress) for more in-depth i18n E2E tests
 
@@ -390,7 +396,7 @@ Typically, security scans and linting can be integrated into CI, or by using ext
 
 - Right-to-left (RTL) languages (e.g., Arabic) might need special layout checks.
 
-#### How to run (Jest tests):
+### How to run (Vitest tests):
 
 1. Run i18n tests once:
 
@@ -493,8 +499,8 @@ Name you test case file like `<name-of-test>.cross-browser.cy.tsx`.
 │       │   └── profile-data.i18n.cy.tsx
 │       └── cross-browser-tests/
 │           └── profile-page.cross-browser.cy.ts
-├── jest.config.ts
-├── jest.setup.ts
+├── vitest.config.ts
+├── vitest.setup.ts
 ├── cypress.config.ts
 ├── package.json
 └── README.md

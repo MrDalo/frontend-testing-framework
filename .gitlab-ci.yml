@@ -20,9 +20,9 @@ lint-security:
     - npm run lint:ci
 
 # ─────────────────────────────────────────────────────────────────────────
-# 2) JEST TESTS (UNIT, INTEGRATION, I18N)
+# 2) VITEST TESTS (UNIT, INTEGRATION, I18N)
 # ─────────────────────────────────────────────────────────────────────────
-jest-tests:
+vitest-tests:
   stage: test
   script:
     - npm ci
@@ -44,4 +44,3 @@ build-nextjs:
     paths:
       - image.tar
     expire_in: 1 day
-

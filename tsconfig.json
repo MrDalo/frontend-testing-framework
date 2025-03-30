@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["jest", "@testing-library/jest-dom"],
+    "types": ["vitest", "@testing-library/jest-dom"],
     "plugins": [
       {
         "name": "next"
@@ -31,5 +31,5 @@
     "src/i18n.ts",
     "next.config.mjs"
   ],
-  "exclude": ["node_modules", "src/tests", "./cypress.config.ts"]
+  "exclude": ["node_modules", "src/tests", "./cypress.config.ts", "cypress"]
 }
