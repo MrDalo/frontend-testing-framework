@@ -37,3 +37,6 @@ next-env.d.ts
 .qodo
 
 /html/
+
+# Cypress testing
+/cypress/snapshots/actual/
